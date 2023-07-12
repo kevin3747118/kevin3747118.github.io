@@ -242,7 +242,8 @@
       }
 
       function handleChangedValue(event) {
-        let value = event.target.value.getUint8(0);
+        // let value = event.target.value.getUint8(0);
+        let value = event.getUint8(0);
         var now = new Date();
         console.log(
           "> " +
