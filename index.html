@@ -228,12 +228,16 @@
           })
           .then((characteristic) => {
             gattCharacteristic = characteristic;
-            gattCharacteristic.addEventListener(
-              "characteristicvaluechanged",
-              handleChangedValue
-            );
+            return characteristic.readValue();
+            // gattCharacteristic.addEventListener(
+            //   "characteristicvaluechanged",
+            //   handleChangedValue
+            // );
             document.querySelector("#start").disabled = false;
             document.querySelector("#stop").disabled = true;
+          })
+          .then((battery) => {
+            handleChangedValue(battery);
           });
       }
 
